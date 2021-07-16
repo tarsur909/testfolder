@@ -65,15 +65,34 @@ plt.ylabel('v mV')
 plt.plot(t, soma_v)
 plt.show()
 
+
+
 f = plt.figure()
+plt.xlabel('t (ms)')
+plt.ylabel('v (mV)')
 amps = [0.075 * i for i in range(1, 5)]
 colors = ['green', 'blue', 'red', 'black']
 for amp, color in zip(amps, colors):
     stim.amp = amp
     h.finitialize(-65 * mV)
     h.continuerun(25 * ms)
-    plt.plot(t, list(soma_v))
+    plt.plot(t, list(soma_v), label='amp=%g' % amp, color=color)
 plt.show(f)
+
+f = plt.figure()
+plt.xlabel('t (ms)')
+plt.ylabel('v (mV)')
+amps = [0.075 * i for i in range(1, 5)]
+colors = ['green', 'blue', 'red', 'black']
+for amp, color in zip(amps, colors):
+    stim.amp = amp
+    h.finitialize(-65 * mV)
+    h.continuerun(25 * ms)
+    plt.plot(t, list(soma_v), label='amp=%g' % amp, color=color)
+    plt.plot(t, list(dend_v), color=color)
+plt.show(f)
+
+
 
 
 
