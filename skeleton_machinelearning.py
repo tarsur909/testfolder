@@ -437,9 +437,6 @@ mlp.fit(X_train, y_train)
 print(mlp.score(X_test, y_test))
 
 
-base_model = keras.applications.Xception(
-    weights='imagenet',  # Load weights pre-trained on ImageNet.
-    input_shape=(150, 150, 3),
-    include_top=False)
+
 
  
